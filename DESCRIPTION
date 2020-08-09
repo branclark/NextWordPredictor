@@ -1,0 +1,6 @@
+Title: NextWordPredictorWebApp
+Author: Brandon Clark
+AuthorUrl: https://github.com/branclark
+DisplayMode: Showcase
+Tags: nlp bag-of-words n-grams predict natural language processing markov chain optimization
+Type: Shiny

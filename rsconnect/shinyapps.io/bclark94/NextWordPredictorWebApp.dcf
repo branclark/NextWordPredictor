@@ -1,0 +1,13 @@
+name: NextWordPredictorWebApp
+title: NextWordPredictorWebApp
+username:
+account: bclark94
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2654851
+bundleId: 3494482
+url: https://bclark94.shinyapps.io/NextWordPredictorWebApp/
+when: 1597009968.11949
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: benchmarkOptimize.R|capstonePresentation.md|capstonePresentation.Rpres|cumulativeWordFreq.r|cumulativeWordFreqPlot.r.png|DictionaryBuilder.r|MilestoneReport.html|MilestoneReport.rmd|Ngrams_tokenizer.R|optimizeWeights.csv|optimizeWeightsPlot.r|optimizeWeightsResults.png|plots.r|shinyApp.PNG|textPredictorWriteUp.rmd|capstonePresentation-figure/unnamed-chunk-2-1.png|data/blogs.txt|data/tweets.txt|smsTrainingData/SMSSpamCollection.txt|textPredictorWriteUp_files/figure-html/unnamed-chunk-7-1.png|textPredictorWriteUp_files/figure-html/unnamed-chunk-8-1.png|datasets|TextPredictorApp
