@@ -1,7 +1,5 @@
 
-<!DOCTYPE html>
-
-<html>
+```html
 
 <head>
 
@@ -751,4 +749,4 @@ $(document).ready(function () {
 </script>
 
 </body>
-</html>
+```
