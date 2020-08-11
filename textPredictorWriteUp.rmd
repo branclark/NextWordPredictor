@@ -2,12 +2,19 @@
 title: "Text Predictor Overview"
 author: "Brandon Clark"
 date: "8/9/2020"
-output: html_document
+output:   
+  github_document:
+    pandoc_args: --webtex=https://ibm.codecogs.com/png.latex?
+always_allow_html: yes
 ---
 
 # Text Predictor Algorithm and Web App
 
 Please find web app: https://bclark94.shinyapps.io/NextWordPredictorWebApp/
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('./shinyApp.PNG')
+```
 
 Techniques used: Natural Language Processing, N grams, Markov Chains, Optimization modeling, Cross Validation, machine learning
 
@@ -63,7 +70,7 @@ en_US.news <- iconv(en_US.news, "latin1", "ASCII", sub="")
 ```
 
 Lines and Word counts in each corpus before preprocessing and cleaining
-```{r warning=FALSE}
+```{r warning=FALSE, eval = FALSE}
 f.word.count <- function(my.list) { sum(stringr::str_count(my.list, "\\S+")) }
 list <- list(blog = en_US.blogs , twitter = en_US.twitter, news = en_US.news)
 
@@ -75,6 +82,10 @@ df$word.count <- sapply(list, f.word.count)
 par(mfrow=c(1,2))
 barplot(height = df$line.count, names.arg = df$source , ylab = 'line count')
 barplot(height = df$word.count, names.arg = df$source , ylab = 'word count')
+```
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('./wordLineCountPlot.PNG')
 ```
 
 
@@ -183,7 +194,7 @@ head(allSourcesDF, n = 20)
 The below plot shows that there is an extremely long tail of words in the corpus.  This indicates that there can be relatively strong prediction accuracy without having to be able predict distinct every word.
 
 This is good news - the memory requirements to be able to predict hundreds of thousands of words is not practical
-```{r warning=FALSE}
+```{r warning=FALSE, eval = FALSE, echo = FALSE}
 allSourcesDF$cumProportion <- cumsum( allSourcesDF$allSourcesFreq )/sum(allSourcesDF$allSourcesFreq )
 
 #par(mfrow=c(2,2))
@@ -203,11 +214,16 @@ plot1 <-plot( seq.int(nrow(allSourcesDF)) , cumsum( allSourcesDF$allSourcesFreq 
 plot1
 ```
 
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('./cumulativeWordFreqPlot.r.png')
+```
+
+
 ### 4. Build nGram Dictionaries
 
 nGram dictionaries will be created as the core of the prediction engine.  An nGram is commonly occuring string of n words.  For example, a 3-gram would be used to predict the 3rd word for a string of 2 words.
 
-```{r warning=FALSE, eval = FALSE}
+```{r warning=FALSE, eval = FALSE, echo=FALSE}
 source("Ngrams_tokenizer.R")
 unigram.tokenizer <- ngram_tokenizer(1)
 wordlist <- unigram.tokenizer(as.character(en_US.blogsCleaned))
@@ -370,7 +386,7 @@ trigramDF$stopWord[index] <- "Y"
 ```
 
 Create dataframes to be used in prediction algorithm.  Example for quadgrams:
-```{r warning=FALSE, eval = FALSE}
+```{r warning=FALSE, eval = FALSE, echo = FALSE}
 
 quadgramDF <- merge(x = blogsQuadgram.df, y = newsQuadgram.df, by = "word", all = TRUE)
 quadgramDF <- merge(x = quadgramDF, y = twitterQuadgram.df, by = "word", all = TRUE)
